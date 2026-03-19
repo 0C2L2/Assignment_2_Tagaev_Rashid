@@ -9,7 +9,6 @@ date: "2026-03-19"
 This is an assignment_2 from week 3 class 2. In this assignment we get to know how to get dummy data, like **airquality** and check its *head* and *tail* to see the shape of the data.
 
 ```{r}
-airquality
 head(airquality)
 tail(airquality)
 ```
@@ -42,7 +41,6 @@ Using `is.na() and !rowSums()` we could clean our dataframe from **NaN and Na**.
 ```{r}
 bad <- is.na(datas)
 new_data<-datas[!rowSums(bad), ]
-new_data
 ```
 ## After that we can see the *head* of the dataframe.
 
