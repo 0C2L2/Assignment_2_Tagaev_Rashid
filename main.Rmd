@@ -1,29 +1,52 @@
 ---
-title: "main"
-output: html_document
+title: "Assignment_2"
+output:
+  word_document: default
+  html_document: default
 date: "2026-03-19"
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+This is an assignment_2 from week 3 class 2. In this assignment we get to know how to get dummy data, like **airquality** and check its *head* and *tail* to see the shape of the data.
+
+```{r}
+airquality
+head(airquality)
+tail(airquality)
 ```
 
-## R Markdown
+## Creating a DataFrame
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+You can create a *DataFrame*, for example:
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+```{r}
+datas<-data.frame(airquality)
+head(airquality)
 ```
 
-## Including Plots
+After this conversion we sort the dataframe from *NaN* and *Na* values with `complete.cases`. Then we take **6** sample data from that dataframe. And see the **essential** information about the data.
 
-You can also embed plots, for example:
+## Process:
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r}
+good<-complete.cases(airquality)
+avldata<-airquality[good,][1:6,]
+avldata
+str(avldata)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+## Cleaning the dataframe:
+Using `is.na() and !rowSums()` we could clean our dataframe from **NaN and Na**.
+
+## Process:
+
+```{r}
+bad <- is.na(datas)
+new_data<-datas[!rowSums(bad), ]
+new_data
+```
+## After that we can see the *head* of the dataframe.
+
+```{r}
+head(new_data)
+```
+
